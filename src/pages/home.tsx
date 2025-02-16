@@ -68,7 +68,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
-        className="flex flex-col justify-center items-center w-full mt-60"
+        className="flex flex-col justify-center items-center w-full mt-40 md:mt-60"
       >
         <h2 className="font-bold md:text-3xl">About Us</h2>
         <div className="w-full text-center px-2 mt-3 md:max-w-2xl">
