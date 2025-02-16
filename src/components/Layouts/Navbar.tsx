@@ -24,14 +24,14 @@ import ResponsiveNavbar from "./ResposiveNavbar";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-center items-center fixed left-0 w-full">
+    <nav className="flex justify-center items-center fixed top-0 left-0 w-full z-50 bg-white">
       <div className="flex justify-between items-center w-full max-w-[1440px] py-4 px-2 md:px-4">
         <Link
           to="/"
           className="flex justify-center items-center gap-2 text-lg md:text-xl font-bold"
         >
           <img
-            src="/icons/Bakir_Guitar_Icon.png"
+            src="/icons/Bakir_Guitar_Icon.webp"
             alt="logo"
             className="w-7 h-7 md:w-10 md:h-10"
           />
