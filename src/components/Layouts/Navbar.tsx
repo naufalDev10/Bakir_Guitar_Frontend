@@ -50,7 +50,7 @@ export default function Navbar() {
               <MenubarTrigger className="border-none shadow-none cursor-pointer focus:ring-0 focus:outline-none">
                 Products
               </MenubarTrigger>
-              <MenubarContent>
+              <MenubarContent className="bg-white">
                 <MenubarItem className="font-medium text-md">
                   Acoustic
                 </MenubarItem>
@@ -69,7 +69,7 @@ export default function Navbar() {
               <MenubarTrigger className="border-none shadow-none cursor-pointer focus:ring-0 focus:outline-none">
                 Others
               </MenubarTrigger>
-              <MenubarContent>
+              <MenubarContent className="bg-white">
                 <MenubarItem className="font-medium text-md">
                   Profile{" "}
                   <MenubarShortcut>
@@ -80,7 +80,7 @@ export default function Navbar() {
                   <MenubarSubTrigger className="font-medium text-base">
                     Theme
                   </MenubarSubTrigger>
-                  <MenubarSubContent>
+                  <MenubarSubContent className="bg-white">
                     <MenubarItem className="font-medium">
                       Light
                       <MenubarShortcut>
