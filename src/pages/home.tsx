@@ -1,10 +1,25 @@
 import Navbar from "@/components/Layouts/Navbar";
+import { BsCart } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, EffectFade } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectFade,
+  FreeMode,
+} from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const heroImage = [
   {
@@ -24,6 +39,54 @@ const heroImage = [
     title: "Unleash Your Musical Potential",
     description:
       "Discover guitars that inspire your creativity and elevate your performance. Our collection is designed for every musician looking to make their mark",
+  },
+];
+
+const productBestSeller = [
+  {
+    id: 1,
+    brand: "Yamaha",
+    type: "F310",
+    descriptions:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
+    price: 1500000,
+    image: "/product-images/Yamaha_F310.png",
+  },
+  {
+    id: 2,
+    brand: "Yamaha",
+    type: "APX 600",
+    descriptions:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
+    price: 2500000,
+    image: "/product-images/Yamaha_F310.png",
+  },
+  {
+    id: 3,
+    brand: "Cort",
+    type: "AD810",
+    descriptions:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
+    price: 1500000,
+    image: "/product-images/Yamaha_F310.png",
+  },
+  {
+    id: 4,
+    brand: "Yamaha",
+    type: "F310",
+    descriptions:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
+    price: 1500000,
+    image: "/product-images/Yamaha_F310.png",
+  },
+  {
+    id: 5,
+    brand: "Yamaha",
+    type: "F310",
+    descriptions:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
+    price: 1500000,
+    image: "/product-images/Yamaha_F310.png",
   },
 ];
 
@@ -70,8 +133,8 @@ export default function Home() {
         viewport={{ once: false, amount: 0.2 }}
         className="flex flex-col justify-center items-center w-full mt-40 md:mt-60"
       >
-        <h2 className="font-bold md:text-3xl">About Us</h2>
-        <div className="w-full text-center px-2 mt-3 md:max-w-2xl">
+        <h2 className="font-bold text-2xl md:text-3xl">About Us</h2>
+        <div className="w-full text-center px-2 mt-10 md:max-w-2xl">
           <p className="font-medium md:text-lg">
             Welcome to Bakir Guitar Official, a guitar store dedicated to
             providing high-quality musical instruments for musicians of all
@@ -87,6 +150,87 @@ export default function Home() {
             and profesional service.
           </p>
         </div>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1,
+          delay: 0.6,
+        }}
+        viewport={{ once: false, margin: "0px 0px -100px 0px" }}
+        className="flex flex-col justify-center items-center mt-20 md:mt-60"
+      >
+        <motion.h3
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 1,
+            delay: 1.5,
+          }}
+          className="font-bold text-2xl md:text-3xl "
+        >
+          Best Seller
+        </motion.h3>
+        <Swiper
+          breakpoints={{
+            340: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            },
+            700: {
+              slidesPerView: 3,
+              spaceBetween: 0,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 0,
+            },
+            1080: {
+              slidesPerView: 4,
+              spaceBetween: 0,
+            },
+          }}
+          freeMode={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[FreeMode, Pagination, Navigation, Autoplay]}
+          navigation
+          autoplay={{ delay: 4000 }}
+          className="max-w-[90%] lg:max-w-[80%] mt-10"
+        >
+          {productBestSeller.map((product) => (
+            <SwiperSlide key={product.id}>
+              <Card className="w-full md:max-w-[240px]">
+                <CardHeader>
+                  <img
+                    src={`${product.image}`}
+                    alt=""
+                    className="block mb-4 object-contain w-[150px] h-[150px] mx-auto md:w-auto md:h-auto"
+                  />
+                  <CardTitle className="font-semibold text-lg">
+                    {product.brand} {product.type}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>
+                    {product.descriptions.substring(0, 25)}...
+                  </CardDescription>
+                </CardContent>
+                <CardFooter className="font-semibold flex justify-between items-center">
+                  {product.price.toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })}
+                  <Button type="button" size="icon">
+                    <BsCart />
+                  </Button>
+                </CardFooter>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </motion.div>
     </>
   );
