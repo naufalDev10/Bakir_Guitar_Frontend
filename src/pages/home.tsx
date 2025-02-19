@@ -1,92 +1,41 @@
 import Navbar from "@/components/Layouts/Navbar";
-import { BsCart } from "react-icons/bs";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  Autoplay,
-  EffectFade,
-  FreeMode,
-} from "swiper/modules";
-import "swiper/swiper-bundle.css";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Hero from "@/components/Organisms/Hero";
+import ProductCarousel from "@/components/Organisms/ProductCarousel";
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, FreeMode } from "swiper/modules";
+import "swiper/swiper-bundle.css";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BsStarFill } from "react-icons/bs";
 
-const heroImage = [
-  {
-    image: "/hero-images/hero-image-1.webp",
-    title: "Welcome to our Guitar Shop",
-    description:
-      "Discover a wide selection of high-quality guitars to enhance your playing experience.",
-  },
-  {
-    image: "/hero-images/hero-image-2.webp",
-    title: "Explore our Guitar Collections",
-    description:
-      "Discover a diverse range of hight-quality guitars. Find the perfect sound that matches your style and take your music to the next level",
-  },
-  {
-    image: "/hero-images/hero-image-3.webp",
-    title: "Unleash Your Musical Potential",
-    description:
-      "Discover guitars that inspire your creativity and elevate your performance. Our collection is designed for every musician looking to make their mark",
-  },
-];
-
-const productBestSeller = [
+const costumerReviews = [
   {
     id: 1,
-    brand: "Yamaha",
-    type: "F310",
-    descriptions:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
-    price: 1500000,
-    image: "/product-images/Yamaha_F310.png",
+    costumerName: "John Doe",
+    review:
+      "This guitar is amazing! The sound is clear and comfortable to play, especially for a beginner like me. The build quality is also solid, it doesn't feel cheap. Fast delivery and well packaged. Very satisfied with this purchase!",
+    rating: 5,
   },
   {
     id: 2,
-    brand: "Yamaha",
-    type: "APX 600",
-    descriptions:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
-    price: 2500000,
-    image: "/product-images/Yamaha_F310.png",
+    costumerName: "Michael Smith",
+    review:
+      "This guitar has good sound quality for the price. It's comfortable to play, especially for fingerstyle. However, the default strings are a bit loud, so I had to replace them with softer ones. Overall, still recommended for beginners!!",
+    rating: 5,
   },
   {
     id: 3,
-    brand: "Cort",
-    type: "AD810",
-    descriptions:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
-    price: 1500000,
-    image: "/product-images/Yamaha_F310.png",
+    costumerName: "David Johnson",
+    review:
+      "This guitar really lives up to my expectations. The sound quality is great, the body feels premium for this price. The only downside was that the initial setup was less than optimal, so I had to retune the strings a bit. But overall, still satisfied!!",
+    rating: 5,
   },
   {
     id: 4,
-    brand: "Yamaha",
-    type: "F310",
-    descriptions:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
-    price: 1500000,
-    image: "/product-images/Yamaha_F310.png",
-  },
-  {
-    id: 5,
-    brand: "Yamaha",
-    type: "F310",
-    descriptions:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ut.",
-    price: 1500000,
-    image: "/product-images/Yamaha_F310.png",
+    costumerName: "Emily Carter",
+    review:
+      "Very satisfied with this guitar! The sound is clear, the body is sturdy, and comfortable to play. Suitable for beginners and those who are experienced. The delivery is also fast and safe. Will definitely recommend to friends!",
+    rating: 5,
   },
 ];
 
@@ -94,38 +43,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Swiper
-        modules={[Pagination, Autoplay, EffectFade]}
-        slidesPerView={1}
-        autoplay={{ delay: 7000 }}
-        pagination={{ clickable: true }}
-        effect="fade"
-        fadeEffect={{ crossFade: true }}
-        className="relative mt-[3.6rem] md:mt-[4.5rem] md:w-full md:h-auto sm:h-auto lg:h-auto xl:h-screen"
-      >
-        {heroImage.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative">
-              <img
-                src={slide.image}
-                alt="image"
-                className="w-full h-[350px] md:w-full md:h-full"
-              />
-              <div className="text-black w-full px-6 py-6 md:absolute md:top-[30%] md:left-20 md:max-w-md md:text-white md:py-0 md:px-0">
-                <h1 className="font-semibold text-2xl md:text-3xl  md:drop-shadow-xl">
-                  {slide.title}
-                </h1>
-                <p className="text-lg md:text-lg md:drop-shadow-lg">
-                  {slide.description}
-                </p>
-                <Button asChild className="mt-3">
-                  <Link to="/products">Explore Now</Link>
-                </Button>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <Hero />
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -151,82 +69,52 @@ export default function Home() {
           </p>
         </div>
       </motion.div>
+      <ProductCarousel />
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 1,
-          delay: 0.6,
-        }}
+        transition={{ duration: 1, delay: 0.6 }}
         viewport={{ once: false, margin: "0px 0px -100px 0px" }}
         className="flex flex-col justify-center items-center mt-20 md:mt-60"
       >
-        <motion.h3
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 1,
-            delay: 1.5,
-          }}
-          className="font-bold text-2xl md:text-3xl "
-        >
-          Best Seller
-        </motion.h3>
+        <h3 className="font-bold text-2xl md:text-3xl">Costumer Reviews</h3>
         <Swiper
           breakpoints={{
-            340: {
-              slidesPerView: 1,
-              spaceBetween: 0,
-            },
-            700: {
-              slidesPerView: 3,
-              spaceBetween: 0,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 0,
-            },
-            1080: {
-              slidesPerView: 4,
-              spaceBetween: 0,
-            },
+            340: { slidesPerView: 1, spaceBetween: 4 },
+            700: { slidesPerView: 3, spaceBetween: 4 },
+            1024: { slidesPerView: 3, spaceBetween: 4 },
           }}
           freeMode={true}
           pagination={{
             clickable: true,
           }}
-          modules={[FreeMode, Pagination, Navigation, Autoplay]}
-          navigation
+          modules={[FreeMode, Pagination, Autoplay]}
           autoplay={{ delay: 4000 }}
           className="max-w-[90%] lg:max-w-[80%] mt-10"
         >
-          {productBestSeller.map((product) => (
-            <SwiperSlide key={product.id}>
-              <Card className="w-full md:max-w-[240px]">
+          {costumerReviews.map((review) => (
+            <SwiperSlide key={review.id}>
+              <Card>
                 <CardHeader>
-                  <img
-                    src={`${product.image}`}
-                    alt=""
-                    className="block mb-4 object-contain w-[150px] h-[150px] mx-auto md:w-auto md:h-auto"
-                  />
-                  <CardTitle className="font-semibold text-lg">
-                    {product.brand} {product.type}
+                  <CardTitle className="flex gap-3">
+                    <img
+                      src=""
+                      alt=""
+                      className="w-10 h-10 rounded-full bg-zinc-400"
+                    />
+                    <div className="flex flex-col gap-2">
+                      <span className="">{review.costumerName}</span>
+                      <div className="flex">
+                        <BsStarFill />
+                        <BsStarFill />
+                        <BsStarFill />
+                        <BsStarFill />
+                        <BsStarFill />
+                      </div>
+                    </div>
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    {product.descriptions.substring(0, 25)}...
-                  </CardDescription>
-                </CardContent>
-                <CardFooter className="font-semibold flex justify-between items-center">
-                  {product.price.toLocaleString("id-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                  })}
-                  <Button type="button" size="icon">
-                    <BsCart />
-                  </Button>
-                </CardFooter>
+                <CardContent>{review.review.substring(0, 50)}...</CardContent>
               </Card>
             </SwiperSlide>
           ))}

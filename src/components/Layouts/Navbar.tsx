@@ -31,7 +31,7 @@ export default function Navbar() {
           className="flex justify-center items-center gap-2 text-lg md:text-xl font-bold"
         >
           <img
-            src="/icons/Bakir_Guitar_Icon.webp"
+            src="/icons/Bakir_Guitar_Icon.ico"
             alt="logo"
             className="w-7 h-7 md:w-10 md:h-10"
           />
