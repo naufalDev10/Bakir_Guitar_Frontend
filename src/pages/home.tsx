@@ -75,7 +75,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.6 }}
         viewport={{ once: false, margin: "0px 0px -100px 0px" }}
-        className="flex flex-col justify-center items-center mt-20 md:mt-60"
+        className="flex flex-col justify-center items-center mt-32 md:mt-60"
       >
         <h3 className="font-bold text-2xl md:text-3xl">Costumer Reviews</h3>
         <Swiper
